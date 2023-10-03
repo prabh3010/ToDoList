@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/content.css">
+
+  <title>To Do List</title>
+</head>
+<header>
+  <% const date = new Date().toDateString(); %>
+
+  <h1> <%= date %></h1>
+  <% if (locals.type === "work"){ %>
+    <h1>Work List</h1>
+ <% } else if(locals.type === "daily"){ %>
+    <h1>Daily List</h1>
+ <% } %>
+  
+</header>
+<main class="container">

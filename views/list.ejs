@@ -1,0 +1,41 @@
+<%- include("partials/header.ejs") %>
+
+<% if (locals.listItems){ %>
+    <ul>
+    <% listItems.forEach((item, index) => { %>
+        <li >
+            <label>
+                <input type="checkbox" id="<%= index %>" onchange="toggleItem(<%=index%> )" <% if (item.completed) { %>checked<% } %>>
+                <span class="<%= item.completed ? 'completed' : '' %>"><%= item.text %></span>
+            </label>
+            
+        </li>
+    <% }) %>
+</ul>
+<%} else {%>
+    <p>No Item </p>
+<% } %>
+<form action="/submit" method="post">
+    <div class="mb-3">
+        <label for="item" class="form-label">Add new item: </label>
+        <input type="text" class="form-control" name="item" required="required">
+      </div>
+      <input type="submit" class="btn btn-primary" value="Add">
+      
+</form>
+
+<%- include("partials/footer.ejs") %>
+
+<script>
+    function toggleItem(index) {
+        const checkbox = document.getElementById(index.toString());
+        const listItem = checkbox.parentNode.parentNode;
+        const span = listItem.querySelector('span');
+
+        if (checkbox.checked) {
+            span.classList.add('completed');
+        } else {
+            span.classList.remove('completed');
+        }
+    }
+</script>
